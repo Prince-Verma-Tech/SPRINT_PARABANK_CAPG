@@ -1,0 +1,2 @@
+Running NEG-LOGIN-01: Login with wrong password
+NEG-LOGIN-01 Result - Error message:"The username and password could not be verified."

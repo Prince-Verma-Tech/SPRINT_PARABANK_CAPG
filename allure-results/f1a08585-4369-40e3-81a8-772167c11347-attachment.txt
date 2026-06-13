@@ -1,0 +1,3 @@
+Running NEG-TRANSFER-01: Accessing transfer page without auth
+NEG-TRANSFER-01 Result - URL after unauthenticated access: "https://parabank.parasoft.com/parabank/transfer.htm"
+NEG-TRANSFER-01 Result - Transfer form not visible

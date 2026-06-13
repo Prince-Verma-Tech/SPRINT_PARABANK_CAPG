@@ -1,0 +1,2 @@
+Running NEG-REG-01: Register with mismatched passwords
+NEG-REG-01 Result - Error message:"Passwords did not match."

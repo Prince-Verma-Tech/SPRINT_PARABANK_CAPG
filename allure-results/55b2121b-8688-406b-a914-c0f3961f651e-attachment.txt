@@ -1,0 +1,12 @@
+Source Account ID: 15453
+UI Balance (before): $215.50
+Created Account Number: 16119
+New Account ID:16119
+Transferred $200 to account 16119
+
+Sender Account (15453)
+Balance BEFORE transfer: $215.50
+Balance AFTER  transfer: $-84.5
+API Balance (new account): 300
+Customer ID (from fixture): 13100
+UI balance before transfer was: $215.50

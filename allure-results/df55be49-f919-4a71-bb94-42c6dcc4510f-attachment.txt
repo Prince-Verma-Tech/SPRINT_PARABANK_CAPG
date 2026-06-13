@@ -1,0 +1,2 @@
+Running NEG-LOGIN-02: Login with blank username
+NEG-LOGIN-02 Result - Error message:"Please enter a username and password."
