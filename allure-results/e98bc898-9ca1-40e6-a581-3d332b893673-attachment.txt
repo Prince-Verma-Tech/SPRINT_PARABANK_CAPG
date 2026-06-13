@@ -1,2 +1,0 @@
-Running NEG-REG-02: Register with empty first name
-NEG-REG-02 Result - Error message:"First name is required."
