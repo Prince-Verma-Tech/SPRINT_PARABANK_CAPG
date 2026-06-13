@@ -26,28 +26,31 @@ pipeline {
                 bat 'npx allure generate allure-results --clean -o allure-report'
             }
         }
-        stage('Open Allure Report') {
-            steps {
-                bat 'npx allure open allure-report'
-            }
-        }
+        // stage('Open Allure Report') {
+        //     steps {
+        //         bat 'npx allure open allure-report'
+        //     }
+        // }
+        // stage('Close Web Server'){
+            
+        // }
     }
 
-    post {
-        always {
+    // post {
+    //     always {
 
-            publishHTML([
-                allowMissing: false,
-                alwaysLinkToLastBuild: true,
-                keepAll: true,
-                reportDir: 'playwright-report',
-                reportFiles: 'index.html',
-                reportName: 'Playwright Report',
-                includes: '**/*'
-            ])
+    //         publishHTML([
+    //             allowMissing: false,
+    //             alwaysLinkToLastBuild: true,
+    //             keepAll: true,
+    //             reportDir: 'playwright-report',
+    //             reportFiles: 'index.html',
+    //             reportName: 'Playwright Report',
+    //             includes: '**/*'
+    //         ])
 
-            archiveArtifacts artifacts: 'playwright-report/**', allowEmptyArchive: true
-            archiveArtifacts artifacts: 'allure-report/**', allowEmptyArchive: true
-        }
-    }
+    //         archiveArtifacts artifacts: 'playwright-report/**', allowEmptyArchive: true
+    //         archiveArtifacts artifacts: 'allure-report/**', allowEmptyArchive: true
+    //     }
+    // }
 }
