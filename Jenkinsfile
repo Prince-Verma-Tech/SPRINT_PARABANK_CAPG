@@ -26,6 +26,11 @@ pipeline {
                 bat 'npx allure generate allure-results --clean -o allure-report'
             }
         }
+        stage('Open Allure Report') {
+            steps {
+                bat 'npx allure open allure-report'
+            }
+        }
     }
 
     post {
