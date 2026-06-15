@@ -41,11 +41,13 @@ pipeline {
             ])
 
             // Allure Report
-            allure(
-                includeProperties: false,
-                jdk: '',
-                results: [[path: 'allure-results']]
-            )
+                always {
+            allure([
+            includeProperties: false,
+            results: [[path: 'allure-results']]
+             ])
+            }
+
         }
     }
 }
