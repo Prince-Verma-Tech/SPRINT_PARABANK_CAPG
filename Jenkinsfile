@@ -2,52 +2,51 @@ pipeline {
     agent any
 
     stages {
+
         stage('Install Dependencies') {
             steps {
                 bat 'npm install'
+            }
+        }
+
+        stage('Install Browsers') {
+            steps {
                 bat 'npx playwright install'
             }
         }
 
         stage('Run Tests') {
             steps {
-                script {
-                    def status = bat(
-                        script: 'npx playwright test',
-                        returnStatus: true
-                    )
+                bat 'npx playwright test'
+            }
+        }
 
-                    if (status != 0) {
-                        echo "Tests failed, but continuing to generate reports..."
-                    }
-                }
+        stage('Generate Allure Report') {
+            steps {
+                bat 'allure generate allure-results --clean -o allure-report'
             }
         }
     }
 
     post {
         always {
-            echo 'Generating Reports...'
 
-            // HTML Report
-            publishHTML(target: [
-                reportDir: 'playwright-report',
-                reportFiles: 'index.html',
-                reportName: 'Playwright HTML Report',
-                alwaysLinkToLastBuild: true,
-                keepAll: true,
-                allowMissing: true,
-                linkRelative: false
+            allure([
+                results: [[path: 'allure-results']]
             ])
 
-            // Allure Report
-                always {
-            allure([
-            includeProperties: false,
-            results: [[path: 'allure-results']]
-             ])
-            }
+            publishHTML([
+                allowMissing: false,
+                alwaysLinkToLastBuild: true,
+                keepAll: true,
+                reportDir: 'playwright-report',
+                reportFiles: 'index.html',
+                reportName: 'Playwright Report',
+                includes: '**/*'
+            ])
 
+            archiveArtifacts artifacts: 'playwright-report/**', allowEmptyArchive: true
+            archiveArtifacts artifacts: 'allure-report/**', allowEmptyArchive: true
         }
     }
 }
